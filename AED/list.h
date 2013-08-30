@@ -8,12 +8,14 @@ using namespace std;
 template<typename T>
 class list
 {
-    typedef Node<T> Node_T;
+    typedef singlePointer_Node<T> Node_T;
     typedef Node_T* pNode_T;
 
     protected:
         pNode_T m_pHead;
         sizet m_size;
+        bool m_ordered;
+        bool m_unique;
 
     private:
         bool inner_find(T&d, Node_T ** &);
@@ -22,7 +24,7 @@ class list
         void invert(pNode_T father, pNode_T son, pNode_T grandSon);
 
     public:
-        list() : m_pHead(0), m_size(0) {}
+        list(bool ordered=0, bool unique=0) : m_pHead(0), m_size(0), m_ordered(ordered), m_unique(unique) {}
         virtual ~list() {}
 
         inline sizet size() {return m_size;}
