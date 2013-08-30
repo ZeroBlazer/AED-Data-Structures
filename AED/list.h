@@ -14,7 +14,6 @@ class list
     protected:
         pNode_T m_pHead;
         sizet m_size;
-        bool m_ordered;
         bool m_unique;
 
     private:
@@ -24,7 +23,7 @@ class list
         void invert(pNode_T father, pNode_T son, pNode_T grandSon);
 
     public:
-        list(bool ordered=0, bool unique=0) : m_pHead(0), m_size(0), m_ordered(ordered), m_unique(unique) {}
+        list(bool unique=0) : m_pHead(0), m_size(0), m_unique(unique) {}
         virtual ~list();
 
         inline sizet size() {return m_size;}
@@ -77,6 +76,9 @@ T& list<T>::at(sizet position)
 template<typename T>
 void list<T>::push_front(T &d)
 {
+    if(m_unique)
+        if(find_rec(d))
+            return;
     pNode_T nu = new Node_T (d);
     if(m_pHead)
         nu->m_pNext=m_pHead;
@@ -87,6 +89,16 @@ void list<T>::push_front(T &d)
 template<typename T>
 void list<T>::push_back(T&d)
 {
+    if(m_unique)
+    {
+        pNode_T* tmp0;
+        if(find(d,tmp0))
+            return;
+        (*tmp0)=new Node_T (d);
+        m_size++;
+        return;
+    }
+
     pNode_T nu = new Node_T (d);
 
     if(!m_pHead)
@@ -171,12 +183,17 @@ void list<T>::remove(T&d)
         (*tmp)=(*tmp)->m_pNext;
         delete mem;
         m_size--;
+        if(m_unique)
+            return;
     }
 }
 //-------------------------d----------------------------
 template<typename T>
 void list<T>::add_rec(T&d, pNode_T& pCurrent)
 {
+    if(m_unique && pCurrent)
+        if(pCurrent->m_dato==d)
+            return;
     if(!pCurrent)
     {
         pCurrent=new Node_T(d,pCurrent);
