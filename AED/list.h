@@ -270,7 +270,7 @@ sizet list<T>::count() { //Count por bucle, utilizar en el trabajo
 //---------------------------i----------------------------
 template<typename T>
 list<T>* list<T>::op_intersection(list<T> &second) {
-    list<T> *ret = new list<T>;
+    list<T> *ret = new list<T>(m_unique);
     pNode_T t1 = m_pHead,
             *tmp;
     while(t1) {
@@ -284,7 +284,7 @@ list<T>* list<T>::op_intersection(list<T> &second) {
 //---------------------------j----------------------------
 template<typename T>
 list<T>* list<T>::op_union(list<T> &second) {
-    list<T> *ret = new list<T>;
+    list<T> *ret = new list<T>(m_unique);
     pNode_T t1 = m_pHead,
             *tmp;
     while(t1) {
