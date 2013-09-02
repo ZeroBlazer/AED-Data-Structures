@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-using namespace std;
-
 typedef size_t sizet;
+
+enum order_class{asc,desc};
 
 /** Basic Node Class with just one pointer to next Node */
 template <typename T>

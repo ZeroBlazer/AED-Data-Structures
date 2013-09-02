@@ -9,6 +9,8 @@ class list
     typedef singlePointer_Node<T> Node_T;
     typedef Node_T* pNode_T;
 
+    template<typename> friend class ord_list;
+
     protected:
         pNode_T m_pHead;
         sizet m_size;
