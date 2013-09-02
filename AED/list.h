@@ -3,8 +3,6 @@
 
 #include "foundations.h"
 
-using namespace std;
-
 template<typename T>
 class list
 {

@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 typedef size_t sizet;
 
 /** Basic Node Class with just one pointer to next Node */
