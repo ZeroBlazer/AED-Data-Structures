@@ -31,8 +31,8 @@ class doublePointer_Node
         doublePointer_Node<T> * m_pNext;
 
     public:
-        doublePointer_Node(T&d) : m_dato(d), m_pNext(0), m_pPrev(0) {}
-        doublePointer_Node(T&d, doublePointer_Node<T> * next, doublePointer_Node<T> * prev) : m_dato(d), m_pNext(next), m_pPrev(prev) {}
+        doublePointer_Node(T&d) : m_dato(d), m_pPrev(0), m_pNext(0) {}
+        doublePointer_Node(T&d, doublePointer_Node<T> * prev, doublePointer_Node<T> * next) : m_dato(d), m_pPrev(prev), m_pNext(next) {}
         virtual ~doublePointer_Node(){}
 };
 
